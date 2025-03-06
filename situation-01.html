@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single to Left - No Runners On</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="main-container">
+    <!-- Left Section: Header + Table -->
+    <div class="left-content">
+        <div class="header-container">
+            <button id="situationPlayButton" onclick="playAudio('situationAudio')">
+                <i class="fas fa-volume-high"></i>
+            </button>
+            <h2>Single to Left - No Runners On</h2>
+        </div>
+        <!-- Situation Audio Play Button -->
+        
+        <audio id="situationAudio">
+            <source src="./audio/def_situation_01.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <table class="description-table">
+            <tr>
+                <th>Position</th>
+                <th>Movement</th>
+                <th>Audio</th>
+            </tr>
+            <tr><td>Pitcher</td><td>Moves into backup position between mound and 2B.</td><td><button onclick="playAudio('pitcherAudio')"><i class="fas fa-volume-high"></i></button></td></tr>
+            <tr><td>Catcher</td><td>Follows the runner to 1B to back up an overthrow.</td><td><button onclick="playAudio('catcherAudio')"><i class="fas fa-volume-high"></i></button></td></tr>
+            <tr><td>1B</td><td>Moves to cover 1B after seeing the runner touch the base.</td><td><button onclick="playAudio('firstBaseAudio')"><i class="fas fa-volume-high"></i></button></td></tr>
+            <tr><td>2B</td><td>Moves into position to cover 2B and receive the throw.</td><td><button onclick="playAudio('secondBaseAudio')"><i class="fas fa-volume-high"></i></button></td></tr>
+            <tr><td>SS</td><td>Lines up relay for the throw from LF, to 2B.</td><td><button onclick="playAudio('ssAudio')"><i class="fas fa-volume-high"></i></button></td></tr>
+            <tr><td>3B</td><td>Stays close to the bag to receive the throw.</td><td><button onclick="playAudio('thirdBaseAudio')"><i class="fas fa-volume-high"></i></button></td></tr>
+            <tr><td>LF</td><td>Fields the ball and makes a throw to SS cutoff.</td><td><button onclick="playAudio('lfAudio')"><i class="fas fa-volume-high"></i></button></td></tr>
+            <tr><td>CF</td><td>Backs up LF in case LF is unalbe to secure the ball.</td><td><button onclick="playAudio('cfAudio')"><i class="fas fa-volume-high"></i></button></td></tr>
+            <tr><td>RF</td><td>Backs up position toward infield.</td><td><button onclick="playAudio('rfAudio')"><i class="fas fa-volume-high"></i></button></td></tr>
+        </table>
+
+        <audio id="pitcherAudio"><source src="./audio/def_situation_01_pitcher.mp3" type="audio/mpeg"></audio>
+        <audio id="catcherAudio"><source src="./audio/def_situation_01_catcher.mp3" type="audio/mpeg"></audio>
+        <audio id="firstBaseAudio"><source src="./audio/def_situation_01_1b.mp3" type="audio/mpeg"></audio>
+        <audio id="secondBaseAudio"><source src="./audio/def_situation_01_2b.mp3" type="audio/mpeg"></audio>
+        <audio id="ssAudio"><source src="./audio/def_situation_01_ss.mp3" type="audio/mpeg"></audio>
+        <audio id="thirdBaseAudio"><source src="./audio/def_situation_01_3b.mp3" type="audio/mpeg"></audio>
+        <audio id="lfAudio"><source src="./audio/def_situation_01_lf.mp3" type="audio/mpeg"></audio>
+        <audio id="cfAudio"><source src="./audio/def_situation_01_cf.mp3" type="audio/mpeg"></audio>
+        <audio id="rfAudio"><source src="./audio/def_situation_01_rf.mp3" type="audio/mpeg"></audio>
+    </div>
+    <div class="right-content">
+        <div class="field-container">
+
+            <img src="./img/field-image.png" alt="Baseball Field" width="100%">
+
+            <!-- Arrows overlay (800 x 618 PNG) -->
+            <img src="./img/arrows_overlay.png" id="arrowOverlay" class="overlay" alt="Arrow Directions" width="100%">
+            
+            <!-- Corrected Player Positions -->
+            <div class="player" id="p" style="top: 55.18%; left: 49.38%;"><i class="fas fa-user"></i></div>
+            <div class="player" id="c" style="top: 83.66%; left: 49.38%;"><i class="fas fa-user-shield"></i></div>
+            <div class="player" id="firstBase" style="top: 46.93%; left: 65.63%;"><i class="fas fa-user"></i></div>
+            <div class="player" id="secondBase" style="top: 33.95%; left: 56.25%;"><i class="fas fa-user"></i></div>
+            <div class="player" id="ss" style="top: 33.98%; left: 43.13%;"><i class="fas fa-user"></i></div>
+            <div class="player" id="thirdBase" style="top: 46.93%; left: 30%;"><i class="fas fa-user"></i></div>
+            <div class="player" id="lf" style="top: 27.51%; left: 23.75%;"><i class="fas fa-user"></i></div>
+            <div class="player" id="cf" style="top: 16.18%; left: 49.38%;"><i class="fas fa-user"></i></div>
+            <div class="player" id="rf" style="top: 27.51%; left: 76.25%;"><i class="fas fa-user"></i></div>
+            <div class="ball" id="ball" style="top: 80.10%; left: 49.38%;"><i class="fas fa-baseball-ball"></i></div>
+            <div class="opponent" id="batter" style="top: 80.10%; left: 51.88%;"><i class="fas fa-running"></i></div>
+        </div>    
+        <!-- Animate Button BELOW Field -->
+        <button id="runPlayButton" onclick="runPlay()">
+            <i class="fas fa-play"></i> ANIMATE!
+        </button>  
+    </div>
+</div>
+<script src="js/situation-01.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/interface.js"></script>
+
+</body>
+</html>
+
+

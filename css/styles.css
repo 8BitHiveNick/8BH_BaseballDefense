@@ -1,0 +1,423 @@
+body {
+    font-family: 'Bai Jamjuree', sans-serif;
+    background-color: #03451F; /* Green background */
+    color: white; /* White text for contrast */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+/* Default: Mobile-first (Stacked Layout) */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Left & Right Sections: Full width on mobile */
+.left-content, .right-content {
+    width: 100%;
+    text-align: center;
+}
+/* Adjust spacing for better alignment */
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Header Styling */
+h2 {
+    color: #FDE11E; /* Yellow heading */
+    background-color: rgba(255, 255, 255, 0.1); /* Light overlay */
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Optionally, apply different font weights for emphasis */
+h1, h2, h3 {
+    font-weight: 600; /* Bold headings */
+}
+
+p, td, th, button {
+    font-weight: 400; /* Regular text */
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Keep everything centered */
+    gap: 10px; /* Space between button and text */
+    text-align: center;
+}
+
+.field-container {
+    position: relative;
+    width: 100%; /* Make it responsive */
+    max-width: 800px; /* Maintain aspect ratio */
+    height: auto;
+    margin: 0 auto; /* Ensures it stays centered */
+    display: flex;
+    justify-content: center;
+}
+.field-container img {
+    display: block;
+    width: 100%; /* Ensures the field scales */
+    height: auto;
+    margin: auto;
+}
+.player, .opponent, .ball {
+    position: absolute;
+    font-size: 24px;
+    color: blue;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+}
+.player {
+    color: blue;
+    font-size: 28px;
+}
+.opponent {
+    color: yellow;
+    font-size: 28px;
+}
+.ball {
+    color: red;
+    font-size: 28px;
+}
+/* Table Styling */
+.description-table {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white; /* White background */
+    color: black; /* Black text */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Table Header Styling */
+.description-table th {
+    background-color: #FDE11E; /* Yellow */
+    color: black; /* Black text */
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    border-bottom: 2px solid black;
+}
+/* Table Row Styling */
+.description-table td {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Zebra Striping for Better Readability */
+.description-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray */
+}
+
+.description-table tr:nth-child(odd) {
+    background-color: white;
+}
+
+/* Table Hover Effect */
+.description-table tr:hover {
+    background-color: #f1f1f1;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Play button icon */
+button i {
+    margin-right: 5px;
+}
+
+/* Audio Play Button */
+.description-table td button {
+    background-color: #03451F; /* Green */
+    color: white;
+    border: 1px solid #FDE11E; /* Yellow border */
+    font-size: 16px;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.description-table td button i {
+    color: #FDE11E; /* Yellow icon */
+    font-size: 14px;
+}
+
+.description-table td button:hover {
+    background-color: #FDE11E; /* Yellow hover */
+    color: black;
+}
+
+.description-table td button:hover i {
+    color: black; /* Icon changes to black on hover */
+}
+
+#situationPlayButton {
+    background-color: #03451F; /* Green */
+    border: 2px solid #FDE11E; /* Yellow border */
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#situationPlayButton i {
+    color: #FDE11E; /* Yellow icon */
+    transition: color 0.3s ease-in-out;
+}
+
+#situationPlayButton:hover {
+    background-color: #FDE11E; /* Yellow hover */
+}
+
+#situationPlayButton:hover i {
+    color: black; /* Black icon on hover */
+}
+
+
+/* Align the button and header properly */
+h2 {
+    display: inline-block;
+    vertical-align: middle;
+}
+.overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%; /* Scale with field */
+height: auto;
+opacity: 1; /* Arrows start visible */
+transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+z-index: 2; /* Ensure it sits above field but below moving players */
+}
+/* Center the play button in table cells */
+.description-table td {
+    text-align: center; /* Horizontally center content */
+    vertical-align: middle; /* Vertically center content */
+}
+
+/* Run Play Button Styling */
+#runPlayButton {
+    background-color: #03451F; /* Green background */
+    color: white;
+    border: 2px solid #FDE11E; /* Yellow border */
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.1s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+/* Play Icon */
+#runPlayButton i {
+    color: #FDE11E; /* Yellow icon */
+    font-size: 20px;
+}
+
+/* Hover Effect */
+#runPlayButton:hover {
+    background-color: #FDE11E; /* Yellow hover */
+    color: black;
+    transform: scale(1.05); /* Slight pop effect */
+}
+
+/* Change Icon Color on Hover */
+#runPlayButton:hover i {
+    color: black;
+}
+
+/* Disabled State (when animation is running) */
+#runPlayButton:disabled {
+    background-color: #666; /* Gray when disabled */
+    border-color: #999;
+    color: #ddd;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#runPlayButton:disabled i {
+    color: #bbb;
+}
+
+/* Adjust text size for smaller screens */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px; /* Smaller text for better readability */
+    }
+
+    h2 {
+        font-size: 16px; /* Reduce heading size */
+    }
+
+    .description-table {
+        font-size: 12px; /* Make table text smaller */
+    }
+
+    .description-table th, .description-table td {
+        padding: 4px; /* Reduce padding to fit better */
+    }
+
+    button {
+        font-size: 14px; /* Adjust button text size */
+        padding: 6px 12px; /* Make the button slightly smaller */
+    }
+}
+    /* Tablet (smaller icons) */
+@media screen and (max-width: 1024px) {
+    .player, .opponent, .ball {
+        font-size: 20px; /* Slightly smaller */
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* Mobile (even smaller icons) */
+@media screen and (max-width: 768px) {
+    .player, .opponent, .ball {
+        font-size: 16px; /* More compact */
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Default size for larger screens */
+.description-table td button {
+    font-size: 18px; /* Normal size */
+    padding: 5px;
+}
+
+/* Mobile (Reduce icon size on smaller screens) */
+@media screen and (max-width: 768px) {
+    .description-table td button {
+        font-size: 14px; /* Smaller icon */
+        padding: 3px;
+    }
+}
+/* Tablet & Desktop: Side-by-Side Layout */
+@media screen and (min-width: 768px) {
+    .main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* ✅ Center everything vertically */
+    width: 90%;
+    margin: auto;
+    gap: 20px;
+    min-height: 90vh; /* ✅ Ensures it fills most of the screen */
+}
+
+.left-content, .right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* ✅ Centers both left and right content */
+    width: 50%;
+}
+
+/* Table takes full left side */
+.description-table {
+    width: 100%;
+    max-width: 100%;
+}
+    /* Field container should center its contents */
+    .field-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* ✅ Ensures field is centered */
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Ensures the ANIMATE button stays properly centered below the field */
+    #runPlayButton {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 50px;
+        font-size: 1rem;
+    }
+}
+
+/* Home Page Container */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full screen height */
+    text-align: center;
+}
+
+/* Situation List (Scrollable) */
+.situation-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    max-height: 400px; /* Scrollable if too many items */
+    overflow-y: auto;
+    padding: 20px;
+    width: 80%;
+}
+
+/* Situation List Items */
+.situation-item {
+    background-color: #FDE11E; /* Yellow */
+    color: #03451F; /* Green */
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    display: block;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out, transform 0.1s ease-in-out;
+}
+
+/* Hover Effect */
+.situation-item:hover {
+    background-color: #03451F;
+    color: #FDE11E;
+    transform: scale(1.05);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .situation-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        max-height: 300px;
+    }
+}
